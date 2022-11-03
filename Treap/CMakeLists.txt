@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 project(test_programm)
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fsanitize=undefined -O1")
 
 # Google tests
 find_package(GTest)
