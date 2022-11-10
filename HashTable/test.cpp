@@ -8,11 +8,46 @@
 #include "include/HashUtils.hpp"
 
 TEST(Basic, INT) {
-  
+  std::unordered_set<int32_t> res;
+  HashTable<int32_t, Hash::IntSimpleHash<int32_t, 1000>,
+            Equality::SimpleEquality<int32_t> >
+      hash_table(1000);
+
+  for (int32_t i = 0; i < 20; ++i) {
+    res.insert(i);
+    hash_table.Insert(i);
+  }
+
+  for (auto element : res) {
+    ASSERT_EQ(true, hash_table.Contains(element));
+  }
+
+  for (int32_t i = 19; i >= 0; --i) {
+    hash_table.Delete(i);
+    ASSERT_EQ(false, hash_table.Contains(i));
+  }
 }
 
 TEST(Basic, String) {
-  
+  std::unordered_set<std::string> res;
+  HashTable<std::string, Hash::StringHash<1000>,
+            Equality::SimpleEquality<std::string> >
+      hash_table(1000);
+
+  res.insert("abc");
+  hash_table.Insert("abc");
+  res.insert("def");
+  hash_table.Insert("def");
+  res.insert("hash");
+  hash_table.Insert("hash");
+  res.insert("a");
+  hash_table.Insert("a");
+
+  for (auto element : res) {
+    ASSERT_EQ(true, hash_table.Contains(element));
+    hash_table.Delete(element);
+    ASSERT_EQ(false, hash_table.Contains(element));
+  }
 }
 
 TEST(Basic, UserTest) {

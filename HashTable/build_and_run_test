@@ -41,5 +41,7 @@ else
 fi
 
 cmake --build .
+
+# start google_tests
 ./test_programm
 
