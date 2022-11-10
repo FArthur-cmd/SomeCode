@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# format all files
+for FILE in include/*.cpp
+do
+  ../format $FILE
+done
+
+for FILE in include/*.h
+do
+  ../format $FILE
+done
+
+for FILE in include/*.hpp
+do
+  ../format $FILE
+done
+
+../format main.cpp
+../format test.cpp
+
+# create directory for building and tests. It will be ignored by git
+if [ ! -d "./build" ]
+then 
+  mkdir build
+fi
+cd build
+
+# TODO: check input?
+if [ -n "$1" ]
+then
+    COMMAND="cmake"
+    for parameter in $@
+    do
+      COMMAND="$COMMAND -D $parameter"
+    done
+    COMMAND="$COMMAND ../"
+    $COMMAND
+else
+    cmake ../
+fi
+
+cmake --build .
+
+# start google_tests
+./test_programm
