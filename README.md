@@ -9,3 +9,8 @@ The code now contains errors to motivate students to correct them.
 * [Header](./Treap/TreapWithImplicitkey.hpp)
 * [Realization](./Treap/TreapWithImplicitkey.cpp)
 * [Tests](./Treap/test.cpp)
+
+## Hash
+
+* [Hash Table](./HashTable/include/HashTable.hpp)
+* [LRU](./LRU/include/LRU.hpp)
