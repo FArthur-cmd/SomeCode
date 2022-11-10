@@ -42,6 +42,12 @@ TEST(Basic, Greater) {
 TEST(Stress, Less) {
   /// TODO: make a lot of tests with generating different data
   /// more examples in other tasks
+  // std::random_device rand_dev;
+  // std::mt19937 gen;
+  // std::uniform_int_distribution<size_t> distrib;
+  // for (size_t iteration = 0; iteration < 10000000; ++iteration) {
+     
+  // }
 }
 
 int main(int argc, char** argv) {
