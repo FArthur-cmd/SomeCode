@@ -64,7 +64,7 @@ std::pair<Node*, Node*> TreapWithImplicitkey::SplitNode(Node* current,
     UpdateChildren(current);
     return std::make_pair(left, current);
   }
-  if (current_pos > pos) {
+  if (current_pos < pos) {
     auto [left, right] = SplitNode(current->right, pos - current_pos - 1);
     current->right = left;
     UpdateChildren(current);
@@ -97,6 +97,7 @@ void TreapWithImplicitkey::Insert(size_t pos, const int64_t& value) {
 void TreapWithImplicitkey::Remove(const size_t& pos) {
   auto [left, right_with_eq] = Split(pos);
   auto [equal, right] = SplitNode(right_with_eq, 1);
+  delete equal;
   root_ = MergeNodes(left, right);
 }
 
@@ -106,11 +107,14 @@ int64_t TreapWithImplicitkey::Find(size_t pos) {
   while (current_pos != pos) {
     if (current_pos < pos) {
       pos -= current_pos;
+      --pos;
       current_ptr = current_ptr->right;
       current_pos = FindPos(current_ptr);
-    } else {
+    } else if (current_ptr->left != nullptr) {
       current_ptr = current_ptr->left;
       current_pos = FindPos(current_ptr);
+    } else {
+      return current_ptr->value;
     }
   }
   return current_ptr->value;

@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "TreapWithImplicitkey.hpp"
+#include "include/TreapWithImplicitkey.hpp"
 
 /// Only simple test cases are demonstrated,
 /// because it is easier to use them for people,

@@ -4,8 +4,6 @@
 #include <limits>
 #include <random>
 
-/// THERE IS AN ERROR IN THIS CODE. TRY TO FIX IT :)
-
 namespace Trees {
 
 struct Node {
@@ -16,8 +14,8 @@ struct Node {
 
   size_t sum_of_children;
   size_t y;
-  Node* left;
-  Node* right;
+  Node* left = nullptr;
+  Node* right = nullptr;
 
   /// size_t sum_in_tree;
   int64_t value;
