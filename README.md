@@ -14,3 +14,6 @@ The code now contains errors to motivate students to correct them.
 
 * [Hash Table](./HashTable/include/HashTable.hpp)
 * [LRU](./LRU/include/LRU.hpp)
+
+
+[How to work with project](./docs/description.md)
